@@ -99,33 +99,39 @@ const drawHorizontal = (props) => {
 	
 	// GAUGE VALUE LABEL
 	if (props.value_label_type === 'value' || props.value_label_type === 'both' || props.value_label_type === 'dboth') {
-		svg.append('text')
+		label_pointer = svg.append('text')
 		.attr('class', 'value-label')
 		.text(props.value_rendered)
 		.attr('dy', `${props.value_label_padding/3}`)
 		.style('font-family', 'Arial, Helvetica, sans-serif')
-		.style('font-size', `${props.value_label_font}${props.limiting_aspect}`)
-		.attr('x', d3.select('.value-line').node().getBBox().x + d3.select('.value-line').node().getBBox().width - d3.select('.value-label').node().getBBox().width)
+		.style('font-size', `${props.value_label_font}${props.limiting_aspect}`);
+		var label_x = d3.select('.value-line').node().getBBox().x + d3.select('.value-line').node().getBBox().width - d3.select('.value-label').node().getBBox().width;
+		label_x = label_x < props.w * -0.5 ? props.w * -0.5 : label_x
+		label_pointer.attr('x', label_x)
 		.attr('y', d3.select('.horizontal-fill').node().getBBox().y + d3.select('.value-line').node().getBBox().height + d3.select('.value-label').node().getBBox().height*3/4);
 	}
 	if (props.value_label_type === 'label' || props.value_label_type === 'both') {
-		svg.append('text')
+		var label_pointer = svg.append('text')
 		.attr('class', 'value-label-label')
 		.text(props.value_label)
 		.attr('dy', `${props.value_label_padding/2}`)
 		.style('font-family', 'Arial, Helvetica, sans-serif')
-		.style('font-size', `${props.value_label_font*3/4}${props.limiting_aspect}`)
-		.attr('x', d3.select('.value-line').node().getBBox().x + d3.select('.value-line').node().getBBox().width - d3.select('.value-label-label').node().getBBox().width)
+		.style('font-size', `${props.value_label_font*3/4}${props.limiting_aspect}`);
+		var label_x = d3.select('.value-line').node().getBBox().x + d3.select('.value-line').node().getBBox().width - d3.select('.value-label-label').node().getBBox().width;
+		label_x = label_x < props.w * -0.5 ? props.w * -0.5 : label_x
+		label_pointer.attr('x', label_x)
 		.attr('y', d3.select('.horizontal-fill').node().getBBox().y + d3.select('.value-line').node().getBBox().height + (props.value_label_type === 'label' ? d3.select('.value-line').node().getBBox().height/3 : d3.select('.value-label').node().getBBox().height*1.3));
 	}
 	if (props.value_label_type === 'dim' || props.value_label_type === 'dboth') {
-		svg.append('text')
+		var label_pointer = svg.append('text')
 		.attr('class', 'value-label-label')
 		.text(props.value_dimension)
 		.attr('dy', `${props.value_label_padding}`)
 		.style('font-family', 'Arial, Helvetica, sans-serif')
-		.style('font-size', `${props.value_label_font/2}${props.limiting_aspect}`)
-		.attr('x', d3.select('.value-line').node().getBBox().x + d3.select('.value-line').node().getBBox().width - d3.select('.value-label-label').node().getBBox().width)
+		.style('font-size', `${props.value_label_font*3/4}${props.limiting_aspect}`)
+		var label_x = d3.select('.value-line').node().getBBox().x + d3.select('.value-line').node().getBBox().width - d3.select('.value-label-label').node().getBBox().width;
+		label_x = label_x < props.w * -0.5 ? props.w * -0.5 : label_x
+		label_pointer.attr('x', label_x)
 		.attr('y', d3.select('.horizontal-fill').node().getBBox().y + d3.select('.value-line').node().getBBox().height + (props.value_label_type === 'dim' ? d3.select('.value-line').node().getBBox().height/3 : d3.select('.value-label').node().getBBox().height*1.3));
 	}
 

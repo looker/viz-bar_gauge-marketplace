@@ -411,7 +411,7 @@ looker.plugins.visualizations.add({
 	          	this.container
       		);
       	}
-      	console.log(config)
+      	// console.log(config)
       	// We are done rendering! Let Looker know.
       	done()
   	}
