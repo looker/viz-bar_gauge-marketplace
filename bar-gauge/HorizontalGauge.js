@@ -99,7 +99,7 @@ const drawHorizontal = (props) => {
 	
 	// GAUGE VALUE LABEL
 	if (props.value_label_type === 'value' || props.value_label_type === 'both' || props.value_label_type === 'dboth') {
-		label_pointer = svg.append('text')
+		var label_pointer = svg.append('text')
 		.attr('class', 'value-label')
 		.text(props.value_rendered)
 		.attr('dy', `${props.value_label_padding/3}`)
