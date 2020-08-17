@@ -12,7 +12,7 @@ constant: VIS_ID {
 
 visualization: {
   id: "@{VIS_ID}"
-  file: "bargauge.js"
+  url: "https://marketplace-api.looker.com/viz-dist/bargauge.js"
   label: "@{VIS_LABEL}"
 }
 
