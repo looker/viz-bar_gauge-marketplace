@@ -341,12 +341,12 @@ looker.plugins.visualizations.add({
       	let chunk;
       	chunk = processData(data, queryResponse, config, this);
 
-      	if (config.bar_range_max === 100.701) {
+      	if (!config.bar_range_max) {
       		let num = Math.max(Math.ceil(chunk.value), chunk.target ? Math.ceil(chunk.target) : 0);
       		var len = (num+'').length;
 	        var fac = Math.pow(10,len-1);
       		let default_max = Math.ceil(num/fac)*fac;
-      		this.trigger("updateConfig", [{bar_range_max: default_max}])
+			config.bar_range_max = default_max
       	}
 
       	this.barDefaults = {
